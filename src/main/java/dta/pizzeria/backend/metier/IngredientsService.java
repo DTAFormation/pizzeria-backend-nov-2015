@@ -6,8 +6,8 @@
 
 package dta.pizzeria.backend.metier;
 
-import dta.pizzeria.backend.dao.IngredientDAO;
-import dta.pizzeria.backend.entity.Ingredient;
+import dta.pizzeria.backend.dao.IngredientsDAO;
+import dta.pizzeria.backend.entity.Ingredients;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,24 +17,24 @@ import org.springframework.stereotype.Service;
  * @author MHayet
  */
 @Service
-public class IngredientService {
+public class IngredientsService {
     
     @Autowired
-    private IngredientDAO ingredientsDao;
+    private IngredientsDAO ingredientsDao;
     
-    public void setIngredient(Ingredient ingredient){
+    public void setIngredient(Ingredients ingredient){
         ingredientsDao.save(ingredient);
     }
     
-    public void updateIngredient(Ingredient ingredient){
+    public void updateIngredient(Ingredients ingredient){
         ingredientsDao.save(ingredient);
     }
     
-    public Ingredient getIngredient(Long id){
+    public Ingredients getIngredient(Long id){
         return ingredientsDao.getOne(id);
     }
     
-    public List<Ingredient> listIngredients(){
+    public List<Ingredients> listIngredients(){
         return ingredientsDao.findAll();
     }
     
@@ -42,7 +42,7 @@ public class IngredientService {
         ingredientsDao.delete(id);
     }
     
-    public void removeIngredient(Ingredient ingredient){
+    public void removeIngredient(Ingredients ingredient){
         ingredientsDao.delete(ingredient);
     }
     

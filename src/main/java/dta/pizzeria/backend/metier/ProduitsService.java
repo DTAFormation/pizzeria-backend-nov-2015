@@ -44,7 +44,7 @@ public class ProduitsService {
 	List<Produits> prods = listProduits();
         List<Produits> pizzas = new ArrayList<>();
         for (Produits prod:prods){
-            if (prod.getType().equals(Produits.Type_Produit.Pizza)){
+            if (prod.getType().equals(Produits.Type_Produit.PIZZA)){
                 pizzas.add(prod);
             }
         }
@@ -57,7 +57,7 @@ public class ProduitsService {
         List<Produits> prods = listProduits();
         List<Produits> boissons= new ArrayList<>();
         for (Produits prod:prods){
-            if (prod.getType().equals(Produits.Type_Produit.Boisson)){
+            if (prod.getType().equals(Produits.Type_Produit.BOISSON)){
                 boissons.add(prod);
             }
         }
@@ -70,7 +70,7 @@ public class ProduitsService {
         List<Produits> prods = listProduits();
         List<Produits> desserts = new ArrayList<>();
         for (Produits prod:prods){
-            if (prod.getType().equals(Produits.Type_Produit.Dessert)){
+            if (prod.getType().equals(Produits.Type_Produit.DESSERT)){
                 desserts.add(prod);
             }
         }

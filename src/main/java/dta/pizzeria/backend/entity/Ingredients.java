@@ -20,7 +20,7 @@ import javax.persistence.ManyToMany;
  * @author MHayet
  */
 @Entity
-public class Ingredient implements Serializable {
+public class Ingredients implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,16 +29,16 @@ public class Ingredient implements Serializable {
     private String Nom;
     
     @ManyToMany(mappedBy = "ingredients")
-    private List<Produits> pizzas = new ArrayList<Produits>();
+    private List<Produits> pizzas = new ArrayList<>();
 
-    public Ingredient() {
+    public Ingredients() {
     }
 
-    public Ingredient(String Nom) {
+    public Ingredients(String Nom) {
         this.Nom = Nom;
     }
 
-    public Ingredient(Long id, String Nom) {
+    public Ingredients(Long id, String Nom) {
         this.id = id;
         this.Nom = Nom;
     }
@@ -77,10 +77,10 @@ public class Ingredient implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Ingredient)) {
+        if (!(object instanceof Ingredients)) {
             return false;
         }
-        Ingredient other = (Ingredient) object;
+        Ingredients other = (Ingredients) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

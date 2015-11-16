@@ -5,13 +5,13 @@
  */
 package dta.pizzeria.backend.dao;
 
-import dta.pizzeria.backend.entity.Ingredient;
+import dta.pizzeria.backend.entity.Ingredients;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author MHayet
  */
-public interface IngredientDAO extends JpaRepository<Ingredient, Long>{
+public interface IngredientsDAO extends JpaRepository<Ingredients, Long>{
     
 }

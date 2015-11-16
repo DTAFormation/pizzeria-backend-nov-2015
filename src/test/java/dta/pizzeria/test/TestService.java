@@ -36,9 +36,9 @@ public class TestService {
     public void before() {
         pService.removeAllProduits();
         
-        Produits produit1 = new Produits(1L, "Pizza1", 12.5F, Produits.Type_Produit.Pizza, Produits.Taille.Large, null);
-        Produits produit2 = new Produits(2L, "Pizza2", 12.5F, Produits.Type_Produit.Pizza, Produits.Taille.Large, null);
-        Produits produit3 = new Produits(3L, "Boisson1", 12.5F, Produits.Type_Produit.Boisson, null, Produits.Format.Normal);
+        Produits produit1 = new Produits(1L, "Pizza1", 12.5F, Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
+        Produits produit2 = new Produits(2L, "Pizza2", 12.5F, Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
+        Produits produit3 = new Produits(3L, "Boisson1", 12.5F, Produits.Type_Produit.BOISSON, null, Produits.Format.NORMAL);
         
         pService.setProduits(produit1);
         pService.setProduits(produit2);

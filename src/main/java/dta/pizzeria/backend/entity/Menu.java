@@ -13,7 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 /**
@@ -31,7 +30,10 @@ public class Menu implements Serializable {
     private Float prix;
     
     @ManyToMany(mappedBy = "menus")
-    private List<Produits> produits = new ArrayList<Produits>();
+    private List<Produits> produits = new ArrayList<>();
+    
+    @ManyToMany(mappedBy = "menus")
+    private List<Commande> commandes = new ArrayList<>();
 
     public Menu() {
     }
@@ -77,6 +79,14 @@ public class Menu implements Serializable {
 
     public void setProduits(List<Produits> produits) {
         this.produits = produits;
+    }
+
+    public List<Commande> getCommandes() {
+        return commandes;
+    }
+
+    public void setCommandes(List<Commande> commandes) {
+        this.commandes = commandes;
     }
 
     @Override

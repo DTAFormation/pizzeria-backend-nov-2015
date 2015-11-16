@@ -26,15 +26,15 @@ import javax.persistence.ManyToMany;
 public class Produits implements Serializable {
     
     public enum Type_Produit{
-        Pizza, Boisson, Dessert
+        PIZZA, BOISSON, DESSERT
     }
     
     public enum Taille{
-        Moyen, Large, XLarge
+        MOYEN, LARGE, XLARGE
     }
     
     public enum Format{
-        Normal, XL
+        NORMAL, XL
     }
     
     private static final long serialVersionUID = 1L;
@@ -50,13 +50,16 @@ public class Produits implements Serializable {
     @Enumerated(EnumType.STRING)
     private Format format;
     
+    @ManyToMany(mappedBy = "produits")
+    private List<Commande> commandes = new ArrayList<>();
+    
     @ManyToMany
     @JoinTable(name = "pizzas_ingredients")
-    private List<Ingredient> ingredients = new ArrayList<Ingredient>();
+    private List<Ingredients> ingredients = new ArrayList<>();
     
     @ManyToMany
     @JoinTable(name = "produits_menu")
-    private List<Menu> menus = new ArrayList<Menu>();
+    private List<Menu> menus = new ArrayList<>();
 
     public Produits() {
     }
@@ -126,11 +129,11 @@ public class Produits implements Serializable {
         this.id = id;
     }
 
-    public List<Ingredient> getIngredients() {
+    public List<Ingredients> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<Ingredient> ingredients) {
+    public void setIngredients(List<Ingredients> ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -140,6 +143,14 @@ public class Produits implements Serializable {
 
     public void setMenus(List<Menu> menus) {
         this.menus = menus;
+    }
+
+    public List<Commande> getCommandes() {
+        return commandes;
+    }
+
+    public void setCommandes(List<Commande> commandes) {
+        this.commandes = commandes;
     }
 
     @Override
