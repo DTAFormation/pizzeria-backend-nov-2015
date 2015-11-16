@@ -1,10 +1,14 @@
 package dta.pizzeria.backend.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -38,6 +42,14 @@ public class Commande implements Serializable {
     @ManyToOne
     @JoinColumn(name = "clientId")
     private Client client;
+    
+    @ManyToMany
+    @JoinTable(name = "commandes_produits")
+    private List<Produits> produits = new ArrayList<>();
+    
+    @ManyToMany
+    @JoinTable(name = "commandes_menus")
+    private List<Menu> menus = new ArrayList<>();
 
     public Commande() {
         
@@ -114,6 +126,22 @@ public class Commande implements Serializable {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public List<Produits> getProduits() {
+        return produits;
+    }
+
+    public void setProduits(List<Produits> produits) {
+        this.produits = produits;
+    }
+
+    public List<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<Menu> menus) {
+        this.menus = menus;
     }
     
     
