@@ -51,7 +51,7 @@ public class testServices {
         
         utilisateurDao.save(utilisateur);
         
-        Client client = new Client(1L, "test", "test", "test", "test", "test");
+        Client client = new Client(1L, "test", "test", "test", "test", "test", "test", "test");
         clientDao.save(client);
         
         Reservation reservation = new Reservation(1L, dateTest, dateTest);
