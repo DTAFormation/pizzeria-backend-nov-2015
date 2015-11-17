@@ -8,10 +8,6 @@ package dta.pizzeria.backend.dao;
 import dta.pizzeria.backend.entity.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-/**
- *
- * @author kk
- */
 public interface ReservationDao extends JpaRepository<Reservation, Long>{
     
 }
