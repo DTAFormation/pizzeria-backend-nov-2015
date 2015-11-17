@@ -1,7 +1,5 @@
 package dta.pizzeria.test;
 
-import static org.junit.Assert.*;
-
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -33,15 +31,21 @@ public class TestClient {
     	clientService.deleteAll();
         
     	Client client1 = new Client("jean", "jacques", "jj@jj.com", "2 rue de JJ", "1234567890", "jj", "jj");
+    	Client client2 = new Client("jeanne", "jacques", "jj@jj.com", "2 rue de JJ22", "1234567890", "jj2", "jj2");
         
     	clientService.save(client1);
+    	clientService.save(client2);
     }
 
     @Test
     public void testClientService() {
         List<Client> clients = clientService.findAll();
+        Client client1 = new Client();
         for (Client client:clients){
+        	client1 = client;
             System.out.println("<====}=0 "+client.getNom());
-        }
-    }
+		}
+        client1.setNom("jean-"+client1.getNom());
+        clientService.save(client1);        
+	}
 }

@@ -3,7 +3,10 @@ package dta.pizzeria.backend.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +17,7 @@ import dta.pizzeria.backend.metier.ClientService;
 
 @RestController
 @RequestMapping("/client")
+@CrossOrigin
 public class ClientRessource {
 	
 	@Autowired private ClientService clientService;
@@ -24,12 +28,12 @@ public class ClientRessource {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public void setClient(@ModelAttribute("client") Client client){
+	public void setClient(@RequestBody Client client){
 		clientService.save(client);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
-	public void updateClient(@ModelAttribute("client") Client client){
+	public void updateClient(@RequestBody Client client){
 		clientService.save(client);
 	}
 
@@ -39,8 +43,8 @@ public class ClientRessource {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value="/{id}")
-	public Client getClient(@RequestParam long id){
-		return clientService.getOne(id);
+	public Client getClient(@PathVariable("id") long id){
+		return clientService.findOne(id);
 	}
 
 }
