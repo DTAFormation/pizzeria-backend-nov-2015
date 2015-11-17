@@ -1,5 +1,6 @@
 package dta.pizzeria.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +24,11 @@ public class Client implements Serializable {
     private String mdp;
     
     @OneToMany(mappedBy = "client")
+    @JsonIgnore
     private List<Reservation> reservations = new ArrayList<Reservation>();
     
     @OneToMany(mappedBy = "client")
+    @JsonIgnore
     private List<Commande> commandes = new ArrayList<Commande>();
 
     public Client() {
