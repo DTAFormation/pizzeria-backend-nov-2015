@@ -6,6 +6,7 @@
 
 package dta.pizzeria.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,7 @@ public class Menu implements Serializable {
     private List<Produits> produits = new ArrayList<>();
     
     @ManyToMany(mappedBy = "menus")
+    @JsonIgnore
     private List<Commande> commandes = new ArrayList<>();
 
     public Menu() {
