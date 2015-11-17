@@ -1,5 +1,6 @@
 package dta.pizzeria.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
