@@ -7,7 +7,9 @@ package dta.pizzeria.test;
  */
 
 import dta.pizzeria.backend.PizzeriaBackendConfig;
+import dta.pizzeria.backend.entity.Client;
 import dta.pizzeria.backend.entity.Produits;
+import dta.pizzeria.backend.metier.ClientService;
 import dta.pizzeria.backend.metier.CommandeService;
 import dta.pizzeria.backend.metier.ProduitsService;
 import java.util.List;
@@ -33,6 +35,8 @@ public class TestService {
     private ProduitsService pService;
     
     @Autowired
+    private ClientService cservice;
+    @Autowired
     private CommandeService cs;
     
     @Before
@@ -50,6 +54,7 @@ public class TestService {
         pService.setProduits(produit2);
         pService.setProduits(produit3);
         
+        cservice.save(new Client(1L, "Winchester", "Dean", "oz@chatte.com", "8 bd kk", "054554545", "DeanChester", "mdp"));
         
     }
 

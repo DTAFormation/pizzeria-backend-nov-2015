@@ -9,6 +9,7 @@ package dta.pizzeria.backend.entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -50,7 +51,7 @@ public class Produits implements Serializable {
     @Enumerated(EnumType.STRING)
     private Format format;
     
-    @ManyToMany(mappedBy = "produits")
+    @ManyToMany(mappedBy = "produits", cascade = CascadeType.ALL)
     private List<Commande> commandes = new ArrayList<>();
     
     @ManyToMany
