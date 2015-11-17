@@ -24,8 +24,8 @@ public class ClientService {
         return clientDao.findAll();
     }
 
-    public Client getOne(Long id) {
-        return clientDao.getOne(id);
+    public Client findOne(Long id) {
+        return clientDao.findOne(id);
     }
 
     public <S extends Client> S save(S s) {
