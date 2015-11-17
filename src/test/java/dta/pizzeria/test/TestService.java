@@ -8,6 +8,7 @@ package dta.pizzeria.test;
 
 import dta.pizzeria.backend.PizzeriaBackendConfig;
 import dta.pizzeria.backend.entity.Produits;
+import dta.pizzeria.backend.metier.CommandeService;
 import dta.pizzeria.backend.metier.ProduitsService;
 import java.util.List;
 import javax.transaction.Transactional;
@@ -31,18 +32,24 @@ public class TestService {
     @Autowired
     private ProduitsService pService;
     
+    @Autowired
+    private CommandeService cs;
+    
     @Before
     @Transactional
     public void before() {
         pService.removeAllProduits();
         
-        Produits produit1 = new Produits(1L, "Pizza1", 12.5F, Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
-        Produits produit2 = new Produits(2L, "Pizza2", 12.5F, Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
-        Produits produit3 = new Produits(3L, "Boisson1", 12.5F, Produits.Type_Produit.BOISSON, null, Produits.Format.NORMAL);
+        Produits produit1 = new Produits(1L, "Extravaganza", 12.5F, Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
+        pService.setProduits(new Produits(2L, "Bacon Groovy", 12.5F, Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null));
+        Produits produit2 = new Produits(3L, "Savoyarde", 12.5F, Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
+        Produits produit3 = new Produits(4L, "Whisky", 12.5F, Produits.Type_Produit.BOISSON, null, Produits.Format.NORMAL);
+        pService.setProduits(new Produits(5L, "White Russian", 12.5F, Produits.Type_Produit.BOISSON, null, Produits.Format.NORMAL));
         
         pService.setProduits(produit1);
         pService.setProduits(produit2);
         pService.setProduits(produit3);
+        
         
     }
 
