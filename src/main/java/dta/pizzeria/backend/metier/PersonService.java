@@ -10,9 +10,10 @@ import java.util.List;
 @Service
 public class PersonService {
 
-    @Autowired private PersonDao personDao;
+	@Autowired private PersonDao personDao;
 
-    public List<Person> listPersons() {
-        return personDao.findAll();
-    }
+	public List<Person> listPersons() {
+		return personDao.findAll();
+	}
+
 }
