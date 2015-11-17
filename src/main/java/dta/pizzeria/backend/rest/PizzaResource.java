@@ -19,7 +19,7 @@ public class PizzaResource {
 	@Autowired private ProduitsService produitsService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Produits> listDesserts() {
+	public List<Produits> listPizzas() {
 		return produitsService.listPizzas();
 	}
 }
