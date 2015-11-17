@@ -5,6 +5,7 @@
  */
 package dta.pizzeria.test;
 
+import dta.pizzeria.backend.PizzeriaBackendConfig;
 import dta.pizzeria.backend.dao.ClientDao;
 import dta.pizzeria.backend.dao.CommandeDao;
 import dta.pizzeria.backend.dao.ReservationDao;
@@ -21,10 +22,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = PizzeriaBackendConfigForTest.class)
+@SpringApplicationConfiguration(classes = PizzeriaBackendConfig.class)
+@WebAppConfiguration
 public class testServices {
     @Autowired
     private UtilisateurDao utilisateurDao;
@@ -47,20 +50,20 @@ public class testServices {
         clientDao.deleteAll();
         utilisateurDao.deleteAll();
         
-        Utilisateur utilisateur = new Utilisateur(1L, "test", "test", "test", "test", "test", "test", "test", Utilisateur.Type.EMPLOYEE);
+        Utilisateur utilisateur = new Utilisateur("test", "test", "test", "test", "test", "test", "test", Utilisateur.Type.EMPLOYEE);
         
         utilisateurDao.save(utilisateur);
         
-        Client client = new Client(1L, "test", "test", "test", "test", "test", "test", "test");
+        Client client = new Client("test", "test", "test", "test", "test", "test", "test");
         clientDao.save(client);
         
-        Reservation reservation = new Reservation(1L, dateTest, dateTest);
+        Reservation reservation = new Reservation(dateTest, dateTest);
         reservation.setClient(client);
         client.getReservations().add(reservation);
         reservationDao.save(reservation);
         clientDao.save(client);
         
-        Commande commande = new Commande(1L, 10.0F, false, Commande.Type.SUR_PLACE, Commande.Paiement.EN_LIGNE, Commande.Etat.PREPARE);
+        Commande commande = new Commande(10.0F, false, Commande.Type.SUR_PLACE, Commande.Paiement.EN_LIGNE, Commande.Etat.PREPARE);
         commande.setClient(client);
         client.getCommandes().add(commande);
         commandeDao.save(commande);
@@ -69,13 +72,13 @@ public class testServices {
     
     @Test
     public void testUtilisateurService() {
-        Utilisateur utilisateur = utilisateurDao.findOne(1L);
+        Utilisateur utilisateur = utilisateurDao.findAll().get(0);
         Assert.assertEquals("test", utilisateur.getLogin());
     }
     
     @Test
     public void testClientCommandeReservation(){
-        Client client = clientDao.findOne(1L);
+        Client client = clientDao.findAll().get(0);
         Assert.assertEquals("test", client.getNom());
 //        Assert.assertEquals("10.0", ""+client.getCommandes().get(0).getTotal());
 //        Assert.assertEquals(dateTest.toString(), ""+client.getReservations().get(0).getDate().toString());
