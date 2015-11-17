@@ -34,7 +34,7 @@ public class MenuService {
         return menuDao.getOne(id);
     }
     
-    public List<Menu> getAllMenu(){
+    public List<Menu> listMenu(){
         return menuDao.findAll();
     }
     
