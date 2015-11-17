@@ -1,6 +1,7 @@
 package dta.pizzeria.backend.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
