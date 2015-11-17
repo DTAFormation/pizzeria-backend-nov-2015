@@ -1,5 +1,7 @@
 # Pizzeria Backend
 
+[![Build Status](http://5.196.89.85:8088/jenkins/buildStatus/icon?job=pizzeria-backend-build)](http://5.196.89.85:8088/jenkins/job/pizzeria-backend-build/)
+
 ## Prérequis
 * Maven 3
 * MySQL
