@@ -5,6 +5,7 @@
  */
 package dta.pizzeria.test;
 
+import dta.pizzeria.backend.PizzeriaBackendConfig;
 import dta.pizzeria.backend.dao.ClientDao;
 import dta.pizzeria.backend.dao.CommandeDao;
 import dta.pizzeria.backend.dao.ReservationDao;
@@ -21,10 +22,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = PizzeriaBackendConfigForTest.class)
+@SpringApplicationConfiguration(classes = PizzeriaBackendConfig.class)
+@WebAppConfiguration
 public class testServices {
     @Autowired
     private UtilisateurDao utilisateurDao;
