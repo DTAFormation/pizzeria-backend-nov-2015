@@ -42,7 +42,6 @@ public class CommandeService {
         for (Produits p : s.getProduits()) {
             
             p = ps.updateProduits(p);
-            System.err.println("PRODUIT : " + p);
         }
 
         return commandDao.save(s);
@@ -55,17 +54,6 @@ public class CommandeService {
     public void deleteAll() {
         commandDao.deleteAll();
     }
-    
-//    public List<Commande> findAllPretes() {
-//        List<Commande> commandesPretes = new ArrayList<Commande>();
-//        List<Commande> commandes = commandDao.findAll();
-//        
-//        for(Commande commande:commandes){
-//            if(commande.getEtat().equals(Commande.Etat.PREPARE))
-//                commandesPretes.add(commande);
-//        }
-//        return commandesPretes;
-//    }
 
     public List<Commande> findByEtat(Commande.Etat etat) {
         return commandDao.findByEtat(etat);

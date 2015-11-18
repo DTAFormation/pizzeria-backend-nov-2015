@@ -35,59 +35,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @WebAppConfiguration
 public class testServices {
 
-//    @Autowired
-//    private UtilisateurDao utilisateurDao;
-//    
-//    @Autowired
-//    private ReservationDao reservationDao;
-//    
-//    @Autowired
-//    private ClientDao clientDao;
-//    
-//    @Autowired
-//    private CommandeDao commandeDao;
-//    
-//    private Date dateTest = new Date();
-//    
-//    @Before
-//    public void setUp() {
-//        reservationDao.deleteAll();
-//        commandeDao.deleteAll();
-//        clientDao.deleteAll();
-//        utilisateurDao.deleteAll();
-//        
-//        Utilisateur utilisateur = new Utilisateur("test", "test", "test", "test", "test", "test", "test", Utilisateur.Type.EMPLOYEE);
-//        
-//        utilisateurDao.save(utilisateur);
-//        
-//        Client client = new Client("test", "test", "test", "test", "test", "test", "test");
-//        clientDao.save(client);
-//        
-//        Reservation reservation = new Reservation(dateTest, dateTest);
-//        reservation.setClient(client);
-//        client.getReservations().add(reservation);
-//        reservationDao.save(reservation);
-//        clientDao.save(client);
-//        
-//        Commande commande = new Commande(10.0F, false, Commande.Type.SUR_PLACE, Commande.Paiement.EN_LIGNE, Commande.Etat.PREPARE);
-//        commande.setClient(client);
-//        client.getCommandes().add(commande);
-//        commandeDao.save(commande);
-//        clientDao.save(client);
-//    }
-//    
-//    @Test
-//    public void testUtilisateurService() {
-//        Utilisateur utilisateur = utilisateurDao.findAll().get(0);
-//        Assert.assertEquals("test", utilisateur.getLogin());
-//    }
-//    
-//    @Test
-//    public void testClientCommandeReservation(){
-//        Client client = clientDao.findAll().get(0);
-//        Assert.assertEquals("test", client.getNom());
-//    }
-
     @Autowired
     private UtilisateurDao utilisateurDao;
     
