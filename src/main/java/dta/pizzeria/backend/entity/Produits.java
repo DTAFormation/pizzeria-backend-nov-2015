@@ -6,9 +6,11 @@
 
 package dta.pizzeria.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -51,6 +53,7 @@ public class Produits implements Serializable {
     private Format format;
     
     @ManyToMany(mappedBy = "produits")
+    @JsonIgnore
     private List<Commande> commandes = new ArrayList<>();
     
     @ManyToMany
@@ -59,6 +62,7 @@ public class Produits implements Serializable {
     
     @ManyToMany
     @JoinTable(name = "produits_menu")
+    @JsonIgnore
     private List<Menu> menus = new ArrayList<>();
 
     public Produits() {

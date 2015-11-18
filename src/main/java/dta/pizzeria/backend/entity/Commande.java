@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -47,7 +48,9 @@ public class Commande implements Serializable {
     @JoinColumn(name = "clientId")
     private Client client;
     
-    @ManyToMany
+    //Ne pas activer de cascade sur des objets déjà persistés
+    
+    @ManyToMany/*(cascade = CascadeType.ALL)*/
     @JoinTable(name = "commandes_produits")
     private List<Produits> produits = new ArrayList<>();
     

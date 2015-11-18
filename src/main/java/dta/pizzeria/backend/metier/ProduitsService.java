@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -27,8 +28,9 @@ public class ProduitsService {
         produitsDao.save(produits);
     }
     
-    public void updateProduits(Produits produits){
-        produitsDao.save(produits);
+    @Transactional
+    public Produits updateProduits(Produits produits){
+        return produitsDao.save(produits);
     }
     
     public Produits getProduits(Long id){
@@ -41,7 +43,7 @@ public class ProduitsService {
     
     public List<Produits> listPizzas(){
         //TODO : a optimiser
-	List<Produits> prods = listProduits();
+    	List<Produits> prods = listProduits();
         List<Produits> pizzas = new ArrayList<>();
         for (Produits prod:prods){
             if (prod.getType().equals(Produits.Type_Produit.PIZZA)){

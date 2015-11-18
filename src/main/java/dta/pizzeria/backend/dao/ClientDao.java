@@ -13,7 +13,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
- * @author kk
+ * @author Vincent
  */
 public interface ClientDao extends JpaRepository<Client, Long>{
     public Client findByLogin(String login);
