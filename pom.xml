@@ -10,8 +10,8 @@
 
     <properties>
         <datasource.url>jdbc:mysql://localhost:3306/pizzeria</datasource.url>
-        <datasource.username>pizzeria</datasource.username>
-        <datasource.password>pizzeria</datasource.password>
+        <datasource.username>root</datasource.username>
+        <datasource.password></datasource.password>
         <datasource.driver-class-name>com.mysql.jdbc.Driver</datasource.driver-class-name>
         <datasource.database-platform>org.hibernate.dialect.MySQL5Dialect</datasource.database-platform>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
