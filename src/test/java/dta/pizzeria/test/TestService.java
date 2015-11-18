@@ -8,7 +8,9 @@ package dta.pizzeria.test;
 
 import dta.pizzeria.backend.PizzeriaBackendConfig;
 import dta.pizzeria.backend.entity.Produits;
+import dta.pizzeria.backend.entity.Utilisateur;
 import dta.pizzeria.backend.metier.ProduitsService;
+import dta.pizzeria.backend.metier.UtilisateurService;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.junit.Before;

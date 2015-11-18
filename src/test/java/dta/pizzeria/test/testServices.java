@@ -8,10 +8,15 @@ package dta.pizzeria.test;
 import dta.pizzeria.backend.PizzeriaBackendConfig;
 import dta.pizzeria.backend.dao.ClientDao;
 import dta.pizzeria.backend.dao.CommandeDao;
+import dta.pizzeria.backend.dao.IngredientsDAO;
+import dta.pizzeria.backend.dao.MenuDAO;
+import dta.pizzeria.backend.dao.ProduitsDAO;
 import dta.pizzeria.backend.dao.ReservationDao;
 import dta.pizzeria.backend.dao.UtilisateurDao;
 import dta.pizzeria.backend.entity.Client;
 import dta.pizzeria.backend.entity.Commande;
+import dta.pizzeria.backend.entity.Menu;
+import dta.pizzeria.backend.entity.Produits;
 import dta.pizzeria.backend.entity.Reservation;
 import dta.pizzeria.backend.entity.Utilisateur;
 import java.util.Date;
@@ -41,33 +46,84 @@ public class testServices {
     @Autowired
     private CommandeDao commandeDao;
     
+    @Autowired
+    private IngredientsDAO ingredientsDao;
+    
+    @Autowired
+    private ProduitsDAO produitsDao;
+    
+    @Autowired
+    private MenuDAO menuDao;
+    
     private Date dateTest = new Date();
     
     @Before
     public void setUp() {
         reservationDao.deleteAll();
         commandeDao.deleteAll();
-        clientDao.deleteAll();
+        
         utilisateurDao.deleteAll();
+        produitsDao.deleteAll();
+        menuDao.deleteAll();
         
+        ingredientsDao.deleteAll();
+        clientDao.deleteAll();
+        
+        //On cree un utilisateur
         Utilisateur utilisateur = new Utilisateur("test", "test", "test", "test", "test", "test", "test", Utilisateur.Type.EMPLOYEE);
-        
         utilisateurDao.save(utilisateur);
         
+        //On cree un client
         Client client = new Client("test", "test", "test", "test", "test", "test", "test");
         clientDao.save(client);
         
+        //On cree une reservation
         Reservation reservation = new Reservation(dateTest, dateTest);
         reservation.setClient(client);
         client.getReservations().add(reservation);
         reservationDao.save(reservation);
         clientDao.save(client);
         
-        Commande commande = new Commande(10.0F, false, Commande.Type.SUR_PLACE, Commande.Paiement.EN_LIGNE, Commande.Etat.PREPARE);
+        //On cree 3 produits
+        Produits pizza = new Produits("Pizza Tartiflette", 5.60F, Produits.Type_Produit.PIZZA, Produits.Taille.MOYEN, null);
+        produitsDao.save(pizza);
+        Produits boisson = new Produits("Coca Cola", 2.5F, Produits.Type_Produit.BOISSON, null, Produits.Format.NORMAL);
+        produitsDao.save(boisson);
+        Produits dessert = new Produits("Fondant au chocolat", 2F, Produits.Type_Produit.DESSERT, null, null);
+        produitsDao.save(dessert);
+        
+        //On cree un menu
+        Menu menu = new Menu("Tartiflette", 8.75F);
+        menuDao.save(menu);
+        
+        dessert.getMenus().add(menu);
+        menu.getProduits().add(dessert);
+        boisson.getMenus().add(menu);
+        menu.getProduits().add(boisson);
+        pizza.getMenus().add(menu);
+        menu.getProduits().add(pizza);
+        produitsDao.save(dessert);
+        produitsDao.save(boisson);
+        produitsDao.save(pizza);
+        menuDao.save(menu);
+        
+        //On cree une commande
+        Commande commande = new Commande(menu.getPrix()+pizza.getPrix(), false, Commande.Type.SUR_PLACE, Commande.Paiement.EN_LIGNE, Commande.Etat.PREPARE);
         commande.setClient(client);
         client.getCommandes().add(commande);
+        
+        commande.getMenus().add(menu);
+        menu.getCommandes().add(commande);
+        
+        commande.getProduits().add(pizza);
+        pizza.getCommandes().add(commande);
+        
+        produitsDao.save(pizza);
+        menuDao.save(menu);
         commandeDao.save(commande);
         clientDao.save(client);
+        
+        
     }
     
     @Test

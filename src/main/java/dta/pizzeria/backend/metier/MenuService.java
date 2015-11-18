@@ -31,10 +31,10 @@ public class MenuService {
     }
     
     public Menu getMenu(Long id){
-        return menuDao.getOne(id);
+        return menuDao.findOne(id);
     }
     
-    public List<Menu> getAllMenu(){
+    public List<Menu> listMenu(){
         return menuDao.findAll();
     }
     

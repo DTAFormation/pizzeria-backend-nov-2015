@@ -24,8 +24,8 @@ public class UtilisateurService {
         return utilisateurDao.findAll();
     }
 
-    public Utilisateur getOne(Long id) {
-        return utilisateurDao.getOne(id);
+    public Utilisateur findOne(Long id) {
+        return utilisateurDao.findOne(id);
     }
 
     public <S extends Utilisateur> S save(S s) {
@@ -39,4 +39,5 @@ public class UtilisateurService {
     public void deleteAll() {
         utilisateurDao.deleteAll();
     }
+    
 }
