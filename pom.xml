@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <datasource.url>jdbc:mysql://localhost:3306/pizzeria</datasource.url>
+        <datasource.url>jdbc:mysql://localhost:8889/pizzeria</datasource.url>
         <datasource.username>pizzeria</datasource.username>
         <datasource.password>pizzeria</datasource.password>
         <datasource.driver-class-name>com.mysql.jdbc.Driver</datasource.driver-class-name>
@@ -36,6 +36,7 @@
                 <configuration>
                     <maxAttempts>180</maxAttempts>
                     <wait>1000</wait>
+                    <jmxPort>9010</jmxPort>
                 </configuration>
             </plugin>
         </plugins>
