@@ -28,7 +28,12 @@ public class CommandeResource {
     
     @RequestMapping(value="/commandesPretes", method = RequestMethod.GET)
     public List<Commande> listCommandesPretes() {
-        return commandeService.findAllPretes();
+        return commandeService.findByEtat(Commande.Etat.PREPARE);
+    }
+    
+    @RequestMapping(value="/commandesEnCours", method = RequestMethod.GET)
+    public List<Commande> listCommandesEnCours() {
+        return commandeService.findByEtat(Commande.Etat.EN_COURS);
     }
     
     

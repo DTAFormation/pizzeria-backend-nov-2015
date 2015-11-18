@@ -108,7 +108,7 @@ public class testServices {
         menuDao.save(menu);
         
         //On cree une commande
-        Commande commande = new Commande(10.0F, false, Commande.Type.SUR_PLACE, Commande.Paiement.EN_LIGNE, Commande.Etat.PREPARE);
+        Commande commande = new Commande(menu.getPrix()+pizza.getPrix(), false, Commande.Type.SUR_PLACE, Commande.Paiement.EN_LIGNE, Commande.Etat.PREPARE);
         commande.setClient(client);
         client.getCommandes().add(commande);
         
