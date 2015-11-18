@@ -6,6 +6,7 @@
 
 package dta.pizzeria.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ public class Ingredients implements Serializable {
     private String Nom;
     
     @ManyToMany(mappedBy = "ingredients")
+    @JsonIgnore
     private List<Produits> pizzas = new ArrayList<>();
 
     public Ingredients() {
