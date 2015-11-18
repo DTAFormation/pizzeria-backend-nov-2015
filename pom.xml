@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <datasource.url>jdbc:mysql://localhost:3306/pizzeria</datasource.url>
+        <datasource.url>jdbc:mysql://localhost:8889/pizzeria</datasource.url>
         <datasource.username>pizzeria</datasource.username>
         <datasource.password>pizzeria</datasource.password>
         <datasource.driver-class-name>com.mysql.jdbc.Driver</datasource.driver-class-name>
@@ -33,6 +33,10 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.version}</version>
+                <configuration>
+                    <maxAttempts>600</maxAttempts>
+                    <wait>1000</wait>
+                </configuration>
             </plugin>
         </plugins>
     </build>
