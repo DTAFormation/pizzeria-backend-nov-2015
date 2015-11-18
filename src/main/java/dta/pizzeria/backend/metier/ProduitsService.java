@@ -43,7 +43,7 @@ public class ProduitsService {
     
     public List<Produits> listPizzas(){
         //TODO : a optimiser
-	List<Produits> prods = listProduits();
+    	List<Produits> prods = listProduits();
         List<Produits> pizzas = new ArrayList<>();
         for (Produits prod:prods){
             if (prod.getType().equals(Produits.Type_Produit.PIZZA)){
