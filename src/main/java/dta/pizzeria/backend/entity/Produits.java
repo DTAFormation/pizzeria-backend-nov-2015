@@ -51,7 +51,7 @@ public class Produits implements Serializable {
     @Enumerated(EnumType.STRING)
     private Format format;
     
-    @ManyToMany(mappedBy = "produits", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "produits")
     private List<Commande> commandes = new ArrayList<>();
     
     @ManyToMany

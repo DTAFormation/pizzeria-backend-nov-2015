@@ -35,22 +35,7 @@ public class CommandeRessource {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public Commande setCommande(@RequestBody Commande commande){
-                System.err.println("IEJIEJFIJZEIFJIZEJF" + commande);
 		return commandeService.save(commande);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT)
-	public void updateCommande(@ModelAttribute("command") Commande commande){
-		commandeService.save(commande);
-	}
-
-	@RequestMapping(method = RequestMethod.DELETE, value="/{id}")
-	public void removeCommande(@RequestParam long id){
-		commandeService.delete(id);
-	}
-
-	@RequestMapping(method = RequestMethod.GET, value="/{id}")
-	public Commande getCommande(@RequestParam long id){
-		return commandeService.getOne(id);
-	}
 }
