@@ -44,9 +44,7 @@ public class CommandeService {
             p = ps.updateProduits(p);
             System.err.println("PRODUIT : " + p);
         }
-        
-        
-        
+
         return commandDao.save(s);
     }
 
