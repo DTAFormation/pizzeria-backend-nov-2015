@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-public class MenuRessource {
+public class MenuResource {
     
     @Autowired
     private MenuService menuService;

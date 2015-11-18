@@ -10,9 +10,9 @@ import dta.pizzeria.backend.dao.ProduitsDAO;
 import dta.pizzeria.backend.entity.Produits;
 import java.util.ArrayList;
 import java.util.List;
-import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -29,8 +29,8 @@ public class ProduitsService {
     }
     
     @Transactional
-    public void updateProduits(Produits produits){
-        produitsDao.save(produits);
+    public Produits updateProduits(Produits produits){
+        return produitsDao.save(produits);
     }
     
     public Produits getProduits(Long id){

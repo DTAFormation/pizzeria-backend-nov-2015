@@ -34,6 +34,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @SpringApplicationConfiguration(classes = PizzeriaBackendConfig.class)
 @WebAppConfiguration
 public class testServices {
+
     @Autowired
     private UtilisateurDao utilisateurDao;
     
