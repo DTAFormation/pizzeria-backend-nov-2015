@@ -7,6 +7,7 @@ package dta.pizzeria.backend.rest;
 
 import dta.pizzeria.backend.entity.Commande;
 import dta.pizzeria.backend.metier.CommandeService;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,11 +32,39 @@ public class CommandeResource {
         return commandeService.findByEtat(Commande.Etat.PREPARE);
     }
     
+    @RequestMapping(value="/commandesPretesCaisse", method = RequestMethod.GET)
+    public List<Commande> listCommandesPretesCaisse() {
+        List<Commande> retour = new ArrayList<>();
+        List<Commande> enCours = commandeService.findByEtat(Commande.Etat.PREPARE);
+        for(Commande commande:enCours){
+            if(!commande.getType().equals(Commande.Type.LIVRAISON))
+                retour.add(commande);
+        }
+        
+        return retour;
+    }
+    
+    @RequestMapping(value="/commandesPretesLivraison", method = RequestMethod.GET)
+    public List<Commande> listCommandesPretesLivraison() {
+        List<Commande> retour = new ArrayList<>();
+        List<Commande> enCours = commandeService.findByEtat(Commande.Etat.PREPARE);
+        for(Commande commande:enCours){
+            if(commande.getType().equals(Commande.Type.LIVRAISON))
+                retour.add(commande);
+        }
+        List<Commande> enLivraison = commandeService.findByEtat(Commande.Etat.LIVRAISON);
+        for(Commande commande:enLivraison){
+            if(commande.getType().equals(Commande.Type.LIVRAISON))
+                retour.add(commande);
+        }
+        
+        return retour;
+    }
+    
     @RequestMapping(value="/commandesEnCours", method = RequestMethod.GET)
     public List<Commande> listCommandesEnCours() {
         return commandeService.findByEtat(Commande.Etat.EN_COURS);
     }
-    
     
     @RequestMapping(value="/command", method = RequestMethod.PUT)
     public void updateCommandes(@RequestBody Commande commande) {
