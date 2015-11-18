@@ -19,8 +19,9 @@ import dta.pizzeria.backend.metier.ClientService;
 @RequestMapping("/client")
 @CrossOrigin
 public class ClientRessource {
-	
-	@Autowired private ClientService clientService;
+
+	@Autowired
+	private ClientService clientService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Client> listClients() {
@@ -28,23 +29,32 @@ public class ClientRessource {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public void setClient(@RequestBody Client client){
+	public void setClient(@RequestBody Client client) {
 		clientService.save(client);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
-	public void updateClient(@RequestBody Client client){
+	public void updateClient(@RequestBody Client client) {
 		clientService.save(client);
 	}
 
-	@RequestMapping(method = RequestMethod.DELETE, value="/{id}")
-	public void removeClient(@RequestParam long id){
+	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+	public void removeClient(@RequestParam long id) {
 		clientService.delete(id);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value="/{id}")
-	public Client getClient(@PathVariable("id") long id){
+	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
+	public Client getClient(@PathVariable("id") long id) {
 		return clientService.findOne(id);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/connexion/{login}/{mdp}")
+	public Client getConnexion(@PathVariable("login") String login, @PathVariable("mdp") String mdp) {
+		Client client = clientService.findByLogin(login);
+		if (client != null && client.getMdp().equals(mdp))
+			return client;
+		else
+			return null;
 	}
 
 }

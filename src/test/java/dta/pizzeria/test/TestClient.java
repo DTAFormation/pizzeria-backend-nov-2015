@@ -21,31 +21,37 @@ import dta.pizzeria.backend.metier.ClientService;
 @WebAppConfiguration
 public class TestClient {
 
-	  
-    @Autowired
-    private ClientService clientService;
-    
-    @Before
-    @Transactional
-    public void before() {
-    	clientService.deleteAll();
-        
-    	Client client1 = new Client("jean", "jacques", "jj@jj.com", "2 rue de JJ", "1234567890", "jj", "jj");
-    	Client client2 = new Client("jeanne", "jacques", "jj@jj.com", "2 rue de JJ22", "1234567890", "jj2", "jj2");
-        
-    	clientService.save(client1);
-    	clientService.save(client2);
-    }
+	@Autowired
+	private ClientService clientService;
 
-    @Test
-    public void testClientService() {
-        List<Client> clients = clientService.findAll();
-        Client client1 = new Client();
-        for (Client client:clients){
-        	client1 = client;
-            System.out.println("<====}=0 "+client.getNom());
-		}
-        client1.setNom("jean-"+client1.getNom());
-        clientService.save(client1);        
+	@Before
+	@Transactional
+	public void before() {
+		clientService.deleteAll();
+
+		Client client1 = new Client("jean", "jacques", "j2j@jj.com", "2 rue de JJ", "1234567890", "jj", "jj");
+		Client client2 = new Client("jeanne", "jacques", "jj@jj.com", "2 rue de JJ22", "1234567890", "jj2", "jj2");
+
+		clientService.save(client1);
+		clientService.save(client2);
+	}
+	//
+	// @Test
+	// public void testClientService() {
+	// List<Client> clients = clientService.findAll();
+	// Client client1 = new Client();
+	// for (Client client:clients){
+	// client1 = client;
+	// System.out.println("<====}=0 "+client.getNom());
+	// }
+	// client1.setNom("jean-"+client1.getNom());
+	// clientService.save(client1);
+	// }
+
+	@Test
+	public void test1() {
+		System.out.println("<====}=0   JE TEST");
+		System.out.println("<====}=0 " + clientService.findByLogin("jj").getNom());
+
 	}
 }
