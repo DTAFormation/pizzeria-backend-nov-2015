@@ -23,4 +23,3 @@ public class PizzaResource {
 		return produitsService.listPizzas();
 	}
 }
-

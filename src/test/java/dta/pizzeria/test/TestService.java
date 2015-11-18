@@ -11,7 +11,10 @@ import dta.pizzeria.backend.entity.Client;
 import dta.pizzeria.backend.entity.Produits;
 import dta.pizzeria.backend.metier.ClientService;
 import dta.pizzeria.backend.metier.CommandeService;
+
+import dta.pizzeria.backend.entity.Utilisateur;
 import dta.pizzeria.backend.metier.ProduitsService;
+import dta.pizzeria.backend.metier.UtilisateurService;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.junit.Before;
