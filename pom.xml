@@ -36,6 +36,7 @@
                 <configuration>
                     <maxAttempts>180</maxAttempts>
                     <wait>1000</wait>
+                    <jmxPort>9010</jmxPort>
                 </configuration>
             </plugin>
         </plugins>

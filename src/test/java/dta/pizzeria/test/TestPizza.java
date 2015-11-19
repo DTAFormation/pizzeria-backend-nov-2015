@@ -42,8 +42,8 @@ public class TestPizza {
 
 	}
 	
-//    @Test
-//    public void testListPizza() {
+    @Test
+    public void testListPizza() {
 //        List<Produits> pizzas = pService.listPizzas();
 //        Assert.assertTrue(Produits.Type_Produit.PIZZA.equals(pizzas.get(0).getType()));
 //        Assert.assertTrue(Produits.Type_Produit.PIZZA.equals(pizzas.get(1).getType()));
@@ -51,6 +51,6 @@ public class TestPizza {
 //        Assert.assertTrue(Produits.Type_Produit.PIZZA.equals(prods.get(0).getType()));
 //        Assert.assertTrue(Produits.Type_Produit.PIZZA.equals(prods.get(1).getType()));
 //        Assert.assertFalse(Produits.Type_Produit.PIZZA.equals(prods.get(2).getType()));
-//    }
+    }
 
 }

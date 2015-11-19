@@ -7,7 +7,11 @@ package dta.pizzeria.test;
 
 import dta.pizzeria.backend.PizzeriaBackendConfig;
 import dta.pizzeria.backend.entity.Menu;
+import dta.pizzeria.backend.entity.Produits;
 import dta.pizzeria.backend.metier.MenuService;
+import dta.pizzeria.backend.metier.ProduitsService;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.transaction.Transactional;
 import junit.framework.Assert;
@@ -32,26 +36,89 @@ public class TestServiceMenu {
     @Autowired
     private MenuService mService;
     
+    @Autowired
+    private ProduitsService pService;
+    
     @Before
     @Transactional
     public void avant() {
+        pService.removeAllProduits();
         mService.removeAllMenu();
         
-        Menu menu1 = new Menu(1L, "PizzaPresta", 12.5F);
-        Menu menu2 = new Menu(2L, "PizzaReina", 15F);
-        Menu menu3 = new Menu(3L, "PizzaImperia", 20F);
+        Produits pizza1 = new Produits("Reina", 12F, Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
+        Produits pizza2 = new Produits("Imperiaa", 15F, Produits.Type_Produit.PIZZA, Produits.Taille.XLARGE, null);
+        Produits boisson1 = new Produits("Coca", 2F, Produits.Type_Produit.BOISSON, null, Produits.Format.NORMAL);
+        Produits boisson2 = new Produits("Pepsi", 3F, Produits.Type_Produit.BOISSON, null, Produits.Format.XL);
+        Produits dessert1 = new Produits("Eclair au Chocolat", 2F, Produits.Type_Produit.DESSERT, null, null);
+        Produits dessert2 = new Produits("Religieuse au Café", 3F, Produits.Type_Produit.DESSERT, null, null);
+        Menu menu1 = new Menu("PizzaReina", 15F);
+        Menu menu2 = new Menu("PizzaImperia", 20F);
         
+        pService.setProduits(pizza1);
+        pService.setProduits(pizza2);
+        pService.setProduits(boisson1);
+        pService.setProduits(boisson2);
+        pService.setProduits(dessert1);
+        pService.setProduits(dessert2);
         mService.setMenu(menu1);
         mService.setMenu(menu2);
-        mService.setMenu(menu3);        
+        
+        List<Produits> produits1 = new ArrayList<>();
+        produits1.add(pizza1);
+        produits1.add(boisson1);
+        produits1.add(dessert1);
+        
+        List<Produits> produits2 = new ArrayList<>();
+        produits1.add(pizza2);
+        produits1.add(boisson2);
+        produits1.add(dessert2);
+        
+        List<Menu> m1 = new ArrayList<>();
+        m1.add(menu1);
+        List<Menu> m2 = new ArrayList<>();
+        m2.add(menu2);
+        
+        pizza1.setMenus(m1);
+        pizza2.setMenus(m2);
+        boisson1.setMenus(m1);
+        boisson2.setMenus(m2);
+        dessert1.setMenus(m1);
+        dessert2.setMenus(m2);
+        
+        menu1.setProduits(produits1);
+        menu1.setProduits(produits2);
+        
+        pService.updateProduits(pizza1);
+        pService.updateProduits(pizza2);
+        pService.updateProduits(boisson1);
+        pService.updateProduits(boisson2);
+        pService.updateProduits(dessert1);
+        pService.updateProduits(dessert2);
+        mService.updateMenu(menu1);
+        mService.updateMenu(menu2);
     }
+    
     @Test
+    @Transactional
     public void test(){
         List<Menu> menus = mService.listMenu();
         
-        Assert.assertEquals("PizzaPresta", menus.get(0).getNom());
-        Assert.assertEquals("PizzaReina", menus.get(1).getNom());
-        Assert.assertEquals("PizzaImperia", menus.get(2).getNom());
+        Assert.assertEquals("PizzaReina", menus.get(0).getNom());
+        Assert.assertEquals("PizzaImperia", menus.get(1).getNom());
+        
+        Long id = menus.get(1).getId();
+        
+        Menu menu = mService.getMenu(id);
+        
+        System.out.println("<====}=0 Menu: "+menu);
+                
+        if (!menu.getProduits().isEmpty()){
+            System.out.println("<====}=0 Pizza: "+menu.getProduits().get(0));
+            System.out.println("<====}=0 Boisson: "+menu.getProduits().get(1));
+            System.out.println("<====}=0 Dessert: "+menu.getProduits().get(2));
+        }else{
+            System.out.println("<====}=0 Aucun produits réupérés");
+        }
     }
     
 }
