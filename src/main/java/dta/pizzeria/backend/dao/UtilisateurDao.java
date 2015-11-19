@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
- * @author kk
+ * @author Vincent
  */
 public interface UtilisateurDao extends JpaRepository<Utilisateur, Long>{
     

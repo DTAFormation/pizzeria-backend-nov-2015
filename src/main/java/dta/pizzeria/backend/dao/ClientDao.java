@@ -6,8 +6,15 @@
 package dta.pizzeria.backend.dao;
 
 import dta.pizzeria.backend.entity.Client;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
+/**
+ *
+ * @author Vincent
+ */
 public interface ClientDao extends JpaRepository<Client, Long>{
-    
+    public Client findByLogin(String login);
 }

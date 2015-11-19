@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dta.pizzeria.backend.entity.Produits;
 import dta.pizzeria.backend.metier.ProduitsService;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/pizza")
@@ -21,5 +23,25 @@ public class PizzaResource {
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Produits> listPizzas() {
 		return produitsService.listPizzas();
+	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	public void setPizza(@ModelAttribute("pizza") Produits pizza){
+		produitsService.setProduits(pizza);
+	}
+
+	@RequestMapping(method = RequestMethod.PUT)
+	public void updatePizza(@ModelAttribute("pizza") Produits pizza){
+		produitsService.updateProduits(pizza);
+	}
+
+	@RequestMapping(method = RequestMethod.DELETE, value="/{id}")
+	public void removePizza(@RequestParam long id){
+		produitsService.removeProduits(id);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value="/{id}")
+	public Produits getPizza(@RequestParam long id){
+		return produitsService.getProduits(id);
 	}
 }

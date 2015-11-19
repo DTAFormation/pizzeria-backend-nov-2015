@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-public class MenuRessource {
+public class MenuResource {
     
     @Autowired
     private MenuService menuService;
@@ -35,6 +35,8 @@ public class MenuRessource {
 
     @RequestMapping(path = "/menu/{monId}", method = RequestMethod.GET)
     public Menu getMenu(@PathVariable("monId") Long id){
+        System.err.println("<====}=0 "+id);
+        System.err.println("<====}=0 "+menuService.getMenu(id));
         return menuService.getMenu(id);
     }
 

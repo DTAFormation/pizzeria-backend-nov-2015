@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,17 +39,19 @@ public class Commande implements Serializable {
     @Enumerated
     private Type type;
     
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Paiement paiement;
     
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Etat etat;
     
     @ManyToOne
     @JoinColumn(name = "clientId")
     private Client client;
     
-    @ManyToMany
+    //Ne pas activer de cascade sur des objets déjà persistés
+    
+    @ManyToMany/*(cascade = CascadeType.ALL)*/
     @JoinTable(name = "commandes_produits")
     private List<Produits> produits = new ArrayList<>();
     
