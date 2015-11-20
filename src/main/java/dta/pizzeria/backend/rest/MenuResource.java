@@ -28,15 +28,13 @@ public class MenuResource {
     @Autowired
     private MenuService menuService;
     
-    @RequestMapping(path = "/menu", method = RequestMethod.GET)
+    @RequestMapping(path = "/menus", method = RequestMethod.GET)
     public List<Menu> listMenus(){
         return menuService.listMenu();
     }
 
     @RequestMapping(path = "/menu/{monId}", method = RequestMethod.GET)
     public Menu getMenu(@PathVariable("monId") Long id){
-        System.err.println("<====}=0 "+id);
-        System.err.println("<====}=0 "+menuService.getMenu(id));
         return menuService.getMenu(id);
     }
 
