@@ -86,11 +86,11 @@ public class testServices {
         clientDao.save(client);
         
         //On cree 3 produits
-        Produits pizza = new Produits("Pizza Tartiflette", 5.60F, Produits.Type_Produit.PIZZA, Produits.Taille.MOYEN, null);
+        Produits pizza = new Produits("Pizza Tartiflette", 5.60F, "fgsupreme.jpg", Produits.Type_Produit.PIZZA, Produits.Taille.MOYEN, null);
         produitsDao.save(pizza);
-        Produits boisson = new Produits("Coca Cola", 2.5F, Produits.Type_Produit.BOISSON, null, Produits.Format.NORMAL);
+        Produits boisson = new Produits("Coca Cola", 2.5F, "fgsupreme.jpg", Produits.Type_Produit.BOISSON, null, Produits.Format.NORMAL);
         produitsDao.save(boisson);
-        Produits dessert = new Produits("Fondant au chocolat", 2F, Produits.Type_Produit.DESSERT, null, null);
+        Produits dessert = new Produits("Fondant au chocolat", 2F, "fgsupreme.jpg", Produits.Type_Produit.DESSERT, null, null);
         produitsDao.save(dessert);
         
         //On cree un menu
