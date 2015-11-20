@@ -6,7 +6,9 @@
 
 package dta.pizzeria.backend.metier;
 
+import dta.pizzeria.backend.dao.IngredientsDAO;
 import dta.pizzeria.backend.dao.ProduitsDAO;
+import dta.pizzeria.backend.entity.Ingredients;
 import dta.pizzeria.backend.entity.Produits;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,13 +26,16 @@ public class ProduitsService {
     @Autowired
     private ProduitsDAO produitsDao;
     
+    @Autowired
+    private IngredientsService ingredientsService;
+    
     public void setProduits(Produits produits){
         produitsDao.save(produits);
     }
     
     @Transactional
-    public Produits updateProduits(Produits produits){
-        return produitsDao.save(produits);
+    public Produits updateProduits(Produits produit){
+       return produitsDao.save(produit);
     }
     
     public Produits getProduits(Long id){
