@@ -3,8 +3,9 @@ package dta.pizzeria.backend.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,8 +30,17 @@ public class ClientRessource {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public void setClient(@RequestBody Client client) {
-		clientService.save(client);
+	public ResponseEntity<?> setClient(@RequestBody Client client) {
+		Client clientExistant = clientService.findByLoginOrMail(client.getLogin(), client.getMail());
+
+		ResponseEntity<?> response = new ResponseEntity<String>("Login ou mail déjà utilisé", HttpStatus.BAD_REQUEST);
+
+		if (clientExistant == null) {
+			Client savedClient = clientService.save(client);
+			response = new ResponseEntity<Client>(savedClient, HttpStatus.CREATED);
+		}
+
+		return response;
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
@@ -49,12 +59,12 @@ public class ClientRessource {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/connexion/{login}/{mdp}")
-	public Client getConnexion(@PathVariable("login") String login, @PathVariable("mdp") String mdp) {
-		Client client = clientService.findByLogin(login);
-		if (client != null && client.getMdp().equals(mdp))
-			return client;
-		else
-			return null;
+	public ResponseEntity<?> getConnexion(@PathVariable("login") String login, @PathVariable("mdp") String mdp) {
+		Client client = clientService.findByLoginAndMdp(login, mdp);
+		ResponseEntity<?> response = new ResponseEntity<String>("Login ou mdp érroné", HttpStatus.BAD_REQUEST);
+		if (client != null)
+			response = new ResponseEntity<Client>(client, HttpStatus.OK);
+		return response;
 	}
 
 }

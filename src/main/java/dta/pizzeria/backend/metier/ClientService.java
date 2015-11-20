@@ -39,8 +39,12 @@ public class ClientService {
     public void deleteAll() {
         clientDao.deleteAll();
     }
-    
-    public Client findByLogin(String login) {
-    	return clientDao.findByLogin(login);
-    }
+
+	public Client findByLoginOrMail(String login, String mail) {
+		return clientDao.findByLoginOrMail(login,mail);
+	}
+
+	public Client findByLoginAndMdp(String login, String mdp) {
+		return clientDao.findByLoginAndMdp(login,mdp);
+	}
 }
