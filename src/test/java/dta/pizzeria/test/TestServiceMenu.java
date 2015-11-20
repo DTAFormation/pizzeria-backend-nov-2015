@@ -11,9 +11,8 @@ import dta.pizzeria.backend.entity.Produits;
 import dta.pizzeria.backend.metier.MenuService;
 import dta.pizzeria.backend.metier.ProduitsService;
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
-import javax.transaction.Transactional;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,10 +21,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
- * @author Nemesis
+ * @author MHayet
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -39,14 +39,13 @@ public class TestServiceMenu {
     @Autowired
     private ProduitsService pService;
     
-    @Before
-    @Transactional
-    public void avant() {
+    @Test
+    public void avant() {/*
         pService.removeAllProduits();
         mService.removeAllMenu();
         
         Produits pizza1 = new Produits("Reina", 12F, Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
-        Produits pizza2 = new Produits("Imperiaa", 15F, Produits.Type_Produit.PIZZA, Produits.Taille.XLARGE, null);
+        Produits pizza2 = new Produits("Imperia", 15F, Produits.Type_Produit.PIZZA, Produits.Taille.XLARGE, null);
         Produits boisson1 = new Produits("Coca", 2F, Produits.Type_Produit.BOISSON, null, Produits.Format.NORMAL);
         Produits boisson2 = new Produits("Pepsi", 3F, Produits.Type_Produit.BOISSON, null, Produits.Format.XL);
         Produits dessert1 = new Produits("Eclair au Chocolat", 2F, Produits.Type_Produit.DESSERT, null, null);
@@ -94,8 +93,8 @@ public class TestServiceMenu {
         pService.updateProduits(boisson2);
         pService.updateProduits(dessert1);
         pService.updateProduits(dessert2);
-        mService.updateMenu(menu1);
-        mService.updateMenu(menu2);
+        mService.updateMenu(menu1); 
+        mService.updateMenu(menu2);*/
     }
     
     @Test
@@ -120,5 +119,6 @@ public class TestServiceMenu {
             System.out.println("<====}=0 Aucun produits réupérés");
         }
     }
+                
     
 }
