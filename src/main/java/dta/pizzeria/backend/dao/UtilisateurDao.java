@@ -13,5 +13,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Vincent
  */
 public interface UtilisateurDao extends JpaRepository<Utilisateur, Long>{
-    
+    Utilisateur findOneByLoginAndMdp(String login,String mdp);
 }

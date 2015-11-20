@@ -39,5 +39,10 @@ public class UtilisateurService {
     public void deleteAll() {
         utilisateurDao.deleteAll();
     }
+
+    public boolean login(String login, String mdp) {
+        return utilisateurDao.findOneByLoginAndMdp(login, mdp)!=null;
+    }
+    
     
 }

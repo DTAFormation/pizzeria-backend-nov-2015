@@ -34,6 +34,11 @@ public class UtilisateurTest {
         System.out.println(">>=====>"+userService.findOne(1L));
     }
     
+    @Test
+    public void testLogin(){
+        userService.login("login", "mdp");
+    }
+    
     @Before
     public void setUp() {
         userService.deleteAll();
