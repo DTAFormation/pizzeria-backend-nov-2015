@@ -46,5 +46,11 @@ public class ClientRessource {
 	public Client getClient(@PathVariable("id") long id){
 		return clientService.findOne(id);
 	}
+        
+        @RequestMapping(method = RequestMethod.POST, value="/search")
+        public Client findByNomAndPrenom(@RequestBody Client client) {
+            System.out.println(client);
+            return clientService.FindByNomAndPrenom(client.getNom(), client.getPrenom());
+        }
 
 }

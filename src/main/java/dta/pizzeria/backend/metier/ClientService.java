@@ -39,4 +39,8 @@ public class ClientService {
     public void deleteAll() {
         clientDao.deleteAll();
     }
+    
+    public Client FindByNomAndPrenom(String nom, String prenom) {
+        return clientDao.findByNomAndPrenom(nom, prenom);
+    }
 }

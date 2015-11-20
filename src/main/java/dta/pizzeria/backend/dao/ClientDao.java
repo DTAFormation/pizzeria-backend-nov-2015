@@ -13,5 +13,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Vincent
  */
 public interface ClientDao extends JpaRepository<Client, Long>{
-    
+    Client findByNomAndPrenom(String nom, String prenom);
 }
