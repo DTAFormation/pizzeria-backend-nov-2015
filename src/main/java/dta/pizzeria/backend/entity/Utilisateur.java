@@ -8,6 +8,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 public class Utilisateur implements Serializable {
@@ -19,18 +22,25 @@ public class Utilisateur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @Length(min = 5)
     @Column(unique=true)
     private String login;
+    
+    @Length(min = 5)
+    @NotEmpty
     private String mdp;
+    
     private String nom;
     private String prenom;
     private String mail;
     private String adresse;
+    
+    @NumberFormat(style = NumberFormat.Style.NUMBER, pattern="^0[1-68][0-9]{8}$")
     private String tel;
     
     @Enumerated(EnumType.STRING)
     private Type type;
-    
 
     public Utilisateur() {
         

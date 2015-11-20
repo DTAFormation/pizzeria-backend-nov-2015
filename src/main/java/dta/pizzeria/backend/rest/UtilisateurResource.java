@@ -9,6 +9,7 @@ import dta.pizzeria.backend.entity.Utilisateur;
 import dta.pizzeria.backend.metier.UtilisateurService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,7 +40,7 @@ public class UtilisateurResource {
     }
     
     @RequestMapping(method = RequestMethod.POST)
-    public void saveUser(@RequestBody Utilisateur user) {
+    public void saveUser(@Validated @RequestBody Utilisateur user) {
         userService.save(user);
     }
     
