@@ -29,6 +29,7 @@ public class Menu implements Serializable {
     
     private String nom;
     private Float prix;
+    private String description;
     
     @ManyToMany(mappedBy = "menus")
     private List<Produits> produits = new ArrayList<>();
@@ -40,15 +41,17 @@ public class Menu implements Serializable {
     public Menu() {
     }
 
-    public Menu(String nom, Float prix) {
+    public Menu(String nom, Float prix, String desc) {
         this.nom = nom;
         this.prix = prix;
+        this.description = desc;
     }
 
-    public Menu(Long id, String nom, Float prix) {
+    public Menu(Long id, String nom, Float prix, String desc) {
         this.id = id;
         this.nom = nom;
         this.prix = prix;
+        this.description = desc;
     }
 
     public Long getId() {
@@ -89,6 +92,14 @@ public class Menu implements Serializable {
 
     public void setCommandes(List<Commande> commandes) {
         this.commandes = commandes;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
