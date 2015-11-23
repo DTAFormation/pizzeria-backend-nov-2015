@@ -31,9 +31,9 @@ public class TestPizza {
 	public void before() {
 		pService.removeAllProduits();
 
-//		Produits produit1 = new Produits(1L, "Pizza1", 12.5F, Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
-//		Produits produit2 = new Produits(2L, "Pizza2", 12.5F, Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
-//		Produits produit3 = new Produits(3L, "Boisson1", 12.5F, Produits.Type_Produit.BOISSON, null,
+//		Produits produit1 = new Produits(1L, "Pizza1", 12.5F, "null",Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
+//		Produits produit2 = new Produits(2L, "Pizza2", 12.5F, "null",Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
+//		Produits produit3 = new Produits(3L, "Boisson1", 12.5F, "null",Produits.Type_Produit.BOISSON, null,
 //				Produits.Format.NORMAL);
 //
 //		pService.setProduits(produit1);
@@ -44,13 +44,14 @@ public class TestPizza {
 	
     @Test
     public void testListPizza() {
-//        List<Produits> pizzas = pService.listPizzas();
-//        Assert.assertTrue(Produits.Type_Produit.PIZZA.equals(pizzas.get(0).getType()));
-//        Assert.assertTrue(Produits.Type_Produit.PIZZA.equals(pizzas.get(1).getType()));
-//        List<Produits> prods = pService.listProduits();
-//        Assert.assertTrue(Produits.Type_Produit.PIZZA.equals(prods.get(0).getType()));
-//        Assert.assertTrue(Produits.Type_Produit.PIZZA.equals(prods.get(1).getType()));
-//        Assert.assertFalse(Produits.Type_Produit.PIZZA.equals(prods.get(2).getType()));
+        List<Produits> pizzas = pService.listPizzas();
+        List<Produits> produits = pService.listProduits();
+        Assert.assertTrue(Produits.Type_Produit.PIZZA.equals(pizzas.get(0).getType()));
+        Assert.assertTrue(Produits.Type_Produit.PIZZA.equals(pizzas.get(1).getType()));
+        Assert.assertTrue(Produits.Type_Produit.PIZZA.equals(produits.get(0).getType()));
+        Assert.assertTrue(Produits.Type_Produit.PIZZA.equals(produits.get(1).getType()));
+        Assert.assertFalse(Produits.Type_Produit.PIZZA.equals(produits.get(2).getType()));
+        Assert.assertTrue(pizzas.size()==2);
     }
 
 }

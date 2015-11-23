@@ -40,7 +40,7 @@ public class TestServiceMenu {
     private ProduitsService pService;
     
     @Test
-    public void avant() {/*
+    public void avant() {
         pService.removeAllProduits();
         mService.removeAllMenu();
         
@@ -51,8 +51,8 @@ public class TestServiceMenu {
         Produits dessert1 = new Produits("Eclair au Chocolat", 2F,  "chocolat.png",Produits.Type_Produit.DESSERT, null, null);
         Produits dessert2 = new Produits("Religieuse au Café", 3F, null, Produits.Type_Produit.DESSERT, null, null);
 
-        Menu menu1 = new Menu("PizzaReina", 15F);
-        Menu menu2 = new Menu("PizzaImperia", 20F);
+        Menu menu1 = new Menu("PizzaReina", 15F, "Menu digne d'un Roi");
+        Menu menu2 = new Menu("PizzaImperia", 20F, "Menu digne d'un Empereur");
         
         pService.setProduits(pizza1);
         pService.setProduits(pizza2);
@@ -75,6 +75,7 @@ public class TestServiceMenu {
         
         List<Menu> m1 = new ArrayList<>();
         m1.add(menu1);
+        m1.add(menu2);
         List<Menu> m2 = new ArrayList<>();
         m2.add(menu2);
         
@@ -95,7 +96,7 @@ public class TestServiceMenu {
         pService.updateProduits(dessert1);
         pService.updateProduits(dessert2);
         mService.updateMenu(menu1); 
-        mService.updateMenu(menu2);*/
+        mService.updateMenu(menu2);
     }
     
     @Test

@@ -36,7 +36,7 @@ public class PizzaResource {
 		produitsService.updateProduits(pizza);
 	}
 
-	@RequestMapping(method = RequestMethod.DELETE, value="/{id}")
+	@RequestMapping(method = RequestMethod.DELETE, value="/pizza/{id}")
 	public void removePizza(@RequestParam long id){
 		produitsService.removeProduits(id);
 	}
