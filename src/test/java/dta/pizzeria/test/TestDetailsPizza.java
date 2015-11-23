@@ -43,15 +43,16 @@ public class TestDetailsPizza {
     @Transactional
     public void before() {
         pService.removeAllProduits();
+        iService.removeAllIngredient();
         
         Produits produit1 = new Produits(1L, "Margarita", 12.5F, "http://dtaformation.github.io/pizzeria-web-image-nov-2015/pizza.png", Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
         Produits produit2 = new Produits(2L, "Reine", 13.5F, "http://dtaformation.github.io/pizzeria-web-image-nov-2015/pizza.png", Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
         Produits produit3 = new Produits(3L, "Boisson1", 14.5F, "http://dtaformation.github.io/pizzeria-web-image-nov-2015/boisson.jpg", Produits.Type_Produit.BOISSON, null, Produits.Format.NORMAL);       
         
         
-        Ingredients ingredient1 = new Ingredients(1L, "mozza");
-        Ingredients ingredient2 = new Ingredients(2L, "jambon");
-        Ingredients ingredient3 = new Ingredients(3L, "champi");
+        Ingredients ingredient1 = new Ingredients( "mozza");
+        Ingredients ingredient2 = new Ingredients( "jambon");
+        Ingredients ingredient3 = new Ingredients( "champi");
         
         iService.setIngredient(ingredient1);
         iService.setIngredient(ingredient2);
