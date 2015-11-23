@@ -14,6 +14,7 @@ import dta.pizzeria.backend.PizzeriaBackendConfig;
 import dta.pizzeria.backend.entity.Client;
 import dta.pizzeria.backend.metier.ClientService;
 import dta.pizzeria.backend.metier.MailService;
+import org.springframework.http.ResponseEntity;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = PizzeriaBackendConfig.class)
@@ -50,10 +51,15 @@ public class TestClient {
 	// clientService.save(client1);
 	// }
 
-	/*
+	
 	@Test
 	public void testMail() {
-		Client clientTest = (Client) clientService.connexion("jj", "jj").getBody();
-		mailService.envoyerMailSMTP(clientTest);
-	}*/
+            ResponseEntity<?> resp = clientService.connexion("jj", "jj");
+            if (resp.getBody().getClass().equals(Client.class)){
+                System.out.println("<====}=0 Client trouvé "+resp.getBody().toString());
+            }
+            if(resp.getBody().getClass().equals(String.class)){
+                System.out.println("<====}=0 Erreur: "+resp.getBody().toString());
+            }
+	}
 }
