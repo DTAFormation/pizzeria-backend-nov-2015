@@ -6,7 +6,6 @@
 
 package dta.pizzeria.backend.metier;
 
-import dta.pizzeria.backend.dao.IngredientsDAO;
 import dta.pizzeria.backend.dao.ProduitsDAO;
 import dta.pizzeria.backend.entity.Ingredients;
 import dta.pizzeria.backend.entity.Produits;
@@ -29,13 +28,64 @@ public class ProduitsService {
     @Autowired
     private IngredientsService ingredientsService;
     
-    public void setProduits(Produits produits){
-        produitsDao.save(produits);
+    @Transactional
+    public Produits setProduits(Produits produit) {
+        
+        List<Ingredients> ingredients = new ArrayList<>();
+        ingredients.addAll(produit.getIngredients());
+        
+        produit.getIngredients().clear();
+        
+        //Si produit est une pizza
+        if (produit.getType() == Produits.Type_Produit.PIZZA) {
+            
+            //Met Format à null
+            produit.setFormat(null);
+            
+            //Enregistrement de la pizza
+            produitsDao.save(produit);
+            
+            for (Ingredients ing : ingredients) {
+                
+                //Update des ingredients
+                ingredientsService.updateIngredient(ing);
+                
+                //Rajout des pizza dans ingredients
+                ing.getPizzas().add(produit);
+                ingredientsService.updateIngredient(ing);
+                
+                //Rajout de l'ingredient dans pizza
+                produit.getIngredients().add(ing);
+            }
+        }
+        
+        //Si le produit est une boisson
+        if (produit.getType() == Produits.Type_Produit.BOISSON) {
+            
+            produitsDao.save(produit);
+            //Met Taille à null
+            produit.setTaille(null);
+        }
+        
+        
+        //Si le produit est un desset
+        if (produit.getType() == Produits.Type_Produit.DESSERT) {
+            
+            produitsDao.save(produit);
+            //Met Format et Taille à null
+            produit.setFormat(null);
+            produit.setTaille(null);
+        }
+            
+        
+        //Enregistrement du produit
+            return produitsDao.save(produit);
+
     }
     
-    @Transactional
     public Produits updateProduits(Produits produit){
-       return produitsDao.save(produit);
+       return setProduits(produit);
+       
     }
     
     public Produits getProduits(Long id){
@@ -47,42 +97,49 @@ public class ProduitsService {
     }
     
     public List<Produits> listPizzas(){
-        //TODO : a optimiser
-    	List<Produits> prods = listProduits();
-        List<Produits> pizzas = new ArrayList<>();
-        for (Produits prod:prods){
-            if (prod.getType().equals(Produits.Type_Produit.PIZZA)){
-                pizzas.add(prod);
-            }
-        }
+//        //TODO : a optimiser
+//    	List<Produits> prods = listProduits();
+//        List<Produits> pizzas = new ArrayList<>();
+//        for (Produits prod:prods){
+//            if (prod.getType().equals(Produits.Type_Produit.PIZZA)){
+//                pizzas.add(prod);
+//            }
+//        }
+//        
+//        return pizzas;
         
-        return pizzas;
+                return produitsDao.findByType(Produits.Type_Produit.PIZZA);
     }
     
     public List<Produits> listBoissons(){
-        //TODO : a optimiser
-        List<Produits> prods = listProduits();
-        List<Produits> boissons= new ArrayList<>();
-        for (Produits prod:prods){
-            if (prod.getType().equals(Produits.Type_Produit.BOISSON)){
-                boissons.add(prod);
-            }
-        }
+//        //TODO : a optimiser
+//        List<Produits> prods = listProduits();
+//        List<Produits> boissons= new ArrayList<>();
+//        for (Produits prod:prods){
+//            if (prod.getType().equals(Produits.Type_Produit.BOISSON)){
+//                boissons.add(prod);
+//            }
+//        }
+//      return boissons;       
         
-        return boissons;
+        return produitsDao.findByType(Produits.Type_Produit.BOISSON);
+        
     }
     
     public List<Produits> listDesserts(){
-        //TODO : a optimiser
-        List<Produits> prods = listProduits();
-        List<Produits> desserts = new ArrayList<>();
-        for (Produits prod:prods){
-            if (prod.getType().equals(Produits.Type_Produit.DESSERT)){
-                desserts.add(prod);
-            }
-        }
+//        //TODO : a optimiser
+//        List<Produits> prods = listProduits();
+//        List<Produits> desserts = new ArrayList<>();
+//        for (Produits prod:prods){
+//            if (prod.getType().equals(Produits.Type_Produit.DESSERT)){
+//                desserts.add(prod);
+//            }
+//        }
+//        
+//        return desserts;
         
-        return desserts;
+       return produitsDao.findByType(Produits.Type_Produit.DESSERT); 
+        
     }
     
     public void removeProduits(Long id){

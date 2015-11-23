@@ -39,35 +39,11 @@ public class ProductResource {
 	
 	@RequestMapping( method = RequestMethod.POST)
 	public void addproduct(@RequestBody Produits produit) {
-		List<Ingredients> ingredients = produit.getIngredients();
-		produit.getIngredients().clear();
-                if(produit.getType()==Produits.Type_Produit.PIZZA){
-                    produit.setFormat(null);
-                    produitsService.setProduits(produit);
-                    for(Ingredients ing:ingredients){
-                            ingredientsService.updateIngredient(ing);
-                            produit.getIngredients().add(ing);
-                            ing.getPizza().add(produit);
-                            ingredientsService.updateIngredient(ing);
-                    }
-                }
 		produitsService.setProduits(produit);
 	}
 	
 	@RequestMapping( method = RequestMethod.PUT)
 	public void updateproduct(@RequestBody Produits produit) {
-		List<Ingredients> ingredients = produit.getIngredients();
-		produit.getIngredients().clear();
-                if(produit.getType()==Produits.Type_Produit.PIZZA){
-                    produit.setFormat(null);
-                    produitsService.setProduits(produit);
-                    for(Ingredients ing:ingredients){
-                            ingredientsService.updateIngredient(ing);
-                            produit.getIngredients().add(ing);
-                            ing.getPizza().add(produit);
-                            ingredientsService.updateIngredient(ing);
-                    }
-                }
 		produitsService.setProduits(produit);
 	}
 }

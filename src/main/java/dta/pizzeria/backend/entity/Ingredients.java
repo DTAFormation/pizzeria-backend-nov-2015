@@ -16,6 +16,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+
+
 /**
  *
  * @author MHayet
@@ -61,7 +63,7 @@ public class Ingredients implements Serializable {
         this.Nom = Nom;
     }
 
-    public List<Produits> getPizza() {
+    public List<Produits> getPizzas() {
         return pizzas;
     }
 
