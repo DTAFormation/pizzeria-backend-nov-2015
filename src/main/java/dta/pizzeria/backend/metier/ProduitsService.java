@@ -34,7 +34,7 @@ public class ProduitsService {
     }
     
     public Produits getProduits(Long id){
-        return produitsDao.getOne(id);
+        return produitsDao.findOne(id);
     }
     
     public List<Produits> listProduits(){

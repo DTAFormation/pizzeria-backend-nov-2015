@@ -47,10 +47,10 @@ public class TestService {
     public void before() {
         pService.removeAllProduits();
         
-        Produits produit1 = new Produits(1L, "Extravaganza", 12.5F, "primavera", Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
-        pService.setProduits(new Produits(2L, "Bacon Groovy", 12.5F, "gourmande",Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null));
-        pService.setProduits(new Produits(6L, "Bacon Groovy", 15F, "gourmande",Produits.Type_Produit.PIZZA, Produits.Taille.XLARGE, null));
-        Produits produit2 = new Produits(3L, "Savoyarde", 12.5F, "pizzachef",Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
+        Produits produit1 = new Produits(1L, "Extravaganza", 12.5F, "primavera.jpg", Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
+        pService.setProduits(new Produits(2L, "Bacon Groovy", 12.5F, "gourmande.jpg",Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null));
+        pService.setProduits(new Produits(6L, "Bacon Groovy", 15F, "gourmande.jpg",Produits.Type_Produit.PIZZA, Produits.Taille.XLARGE, null));
+        Produits produit2 = new Produits(3L, "Savoyarde", 12.5F, "pizzachef.jpg",Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
         Produits produit3 = new Produits(4L, "Whisky", 12.5F, "coca.png",Produits.Type_Produit.BOISSON, null, Produits.Format.NORMAL);
         pService.setProduits(new Produits(7L, "White Russian", 25F, "fanta.png",Produits.Type_Produit.BOISSON, null, Produits.Format.XL));
         pService.setProduits(new Produits(5L, "White Russian", 12.5F, "fanta.png", Produits.Type_Produit.BOISSON, null, Produits.Format.NORMAL));
