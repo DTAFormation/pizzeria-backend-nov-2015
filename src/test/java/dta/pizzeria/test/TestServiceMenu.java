@@ -49,7 +49,7 @@ public class TestServiceMenu {
         Produits boisson1 = new Produits("Coca", 2F, "coca.png",Produits.Type_Produit.BOISSON, null, Produits.Format.NORMAL);
         Produits boisson2 = new Produits("Pepsi", 3F, "sprite.png", Produits.Type_Produit.BOISSON, null, Produits.Format.XL);
         Produits dessert1 = new Produits("Eclair au Chocolat", 2F,  "chocolat.png",Produits.Type_Produit.DESSERT, null, null);
-        Produits dessert2 = new Produits("Religieuse au Café", 3F, null, Produits.Type_Produit.DESSERT, null, null);
+        Produits dessert2 = new Produits("Religieuse au Café", 3F, "chocolat.png", Produits.Type_Produit.DESSERT, null, null);
 
         Menu menu1 = new Menu("PizzaReina", 15F, "Menu digne d'un Roi");
         Menu menu2 = new Menu("PizzaImperia", 20F, "Menu digne d'un Empereur");
