@@ -31,16 +31,7 @@ public class ClientRessource {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<?> setClient(@RequestBody Client client) {
-		Client clientExistant = clientService.findByLoginOrMail(client.getLogin(), client.getMail());
-
-		ResponseEntity<?> response = new ResponseEntity<String>("Login ou mail déjà utilisé", HttpStatus.BAD_REQUEST);
-
-		if (clientExistant == null) {
-			Client savedClient = clientService.save(client);
-			response = new ResponseEntity<Client>(savedClient, HttpStatus.CREATED);
-		}
-
-		return response;
+		return clientService.inscription(client);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
@@ -58,13 +49,14 @@ public class ClientRessource {
 		return clientService.findOne(id);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/connexion/{login}/{mdp}")
-	public ResponseEntity<?> getConnexion(@PathVariable("login") String login, @PathVariable("mdp") String mdp) {
-		Client client = clientService.findByLoginAndMdp(login, mdp);
-		ResponseEntity<?> response = new ResponseEntity<String>("Login ou mdp érroné", HttpStatus.BAD_REQUEST);
-		if (client != null)
-			response = new ResponseEntity<Client>(client, HttpStatus.OK);
-		return response;
+	@RequestMapping(method = RequestMethod.GET, value = "connexion")
+	public ResponseEntity<?> connexion(@RequestParam("login") String login, @RequestParam("mdp") String mdp) {
+		return clientService.connexion(login, mdp);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value ="validation")
+	public ResponseEntity<?> validation(@RequestParam("id") long id, @RequestParam("hash") int hash) {
+		return clientService.validation(id, hash);
 	}
 
 }
