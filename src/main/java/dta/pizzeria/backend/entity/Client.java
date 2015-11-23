@@ -40,6 +40,8 @@ public class Client implements Serializable {
     @OneToMany(mappedBy = "client")
     @JsonIgnore
     private List<Commande> commandes = new ArrayList<Commande>();
+    
+    private boolean validation = false;
 
     public Client() {
     }
@@ -145,4 +147,11 @@ public class Client implements Serializable {
         this.mdp = mdp;
     }
     
+    public boolean getValidation() {
+        return validation;
+    }
+
+    public void setValidation(boolean validation) {
+        this.validation = validation;
+    }
 }
