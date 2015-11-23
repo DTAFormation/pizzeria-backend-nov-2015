@@ -44,9 +44,9 @@ public class TestDetailsPizza {
     public void before() {
         pService.removeAllProduits();
         
-        Produits produit1 = new Produits(1L, "Pizza1", 12.5F, Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
-        Produits produit2 = new Produits(2L, "Pizza2", 12.5F, Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
-        Produits produit3 = new Produits(3L, "Boisson1", 12.5F, Produits.Type_Produit.BOISSON, null, Produits.Format.NORMAL);       
+        Produits produit1 = new Produits(1L, "Pizza1", 12.5F, "C:\\Users\\ETY\\Documents\\Git\\pizzeria-web-image-nov-2015\\pizza.png", Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
+        Produits produit2 = new Produits(2L, "Pizza2", 13.5F, "C:\\Users\\ETY\\Documents\\Git\\pizzeria-web-image-nov-2015\\pizza.png", Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
+        Produits produit3 = new Produits(3L, "Boisson1", 14.5F, "C:\\Users\\ETY\\Documents\\Git\\pizzeria-web-image-nov-2015\\pizza.png", Produits.Type_Produit.BOISSON, null, Produits.Format.NORMAL);       
         
         
         Ingredients ingredient1 = new Ingredients(1L, "ingredient1");
