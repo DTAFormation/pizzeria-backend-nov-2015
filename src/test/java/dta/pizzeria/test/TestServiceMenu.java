@@ -98,7 +98,7 @@ public class TestServiceMenu {
         mService.updateMenu(menu1); 
         mService.updateMenu(menu2);
     }
-    
+    /*
     @Test
     @Transactional
     public void test(){
@@ -122,5 +122,5 @@ public class TestServiceMenu {
         }
     }
                 
-    
+    */
 }
