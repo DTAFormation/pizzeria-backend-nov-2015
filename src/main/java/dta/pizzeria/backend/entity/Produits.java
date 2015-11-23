@@ -45,12 +45,14 @@ public class Produits implements Serializable {
     private Long id;
     private String nom;
     private Float prix;
+    private String image;
     @Enumerated(EnumType.STRING)
     private Type_Produit type;
     @Enumerated(EnumType.STRING)
     private Taille taille;
     @Enumerated(EnumType.STRING)
     private Format format;
+    
     
     @ManyToMany(mappedBy = "produits")
     @JsonIgnore
@@ -68,18 +70,20 @@ public class Produits implements Serializable {
     public Produits() {
     }
 
-    public Produits(String nom, Float prix, Type_Produit type, Taille taille, Format format) {
+    public Produits(String nom, Float prix, String image, Type_Produit type, Taille taille, Format format) {
         this.nom = nom;
         this.prix = prix;
+        this.image = image;
         this.type = type;
         this.taille = taille;
         this.format = format;
     }
 
-    public Produits(Long id, String nom, Float prix, Type_Produit type, Taille taille, Format format) {
+    public Produits(Long id, String nom, Float prix, String image, Type_Produit type, Taille taille, Format format) {
         this.id = id;
         this.nom = nom;
         this.prix = prix;
+        this.image = image;
         this.type = type;
         this.taille = taille;
         this.format = format;
@@ -99,6 +103,14 @@ public class Produits implements Serializable {
 
     public void setPrix(Float prix) {
         this.prix = prix;
+    }
+    
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Type_Produit getType() {

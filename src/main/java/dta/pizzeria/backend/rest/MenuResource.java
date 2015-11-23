@@ -28,7 +28,7 @@ public class MenuResource {
     @Autowired
     private MenuService menuService;
     
-    @RequestMapping(path = "/menu", method = RequestMethod.GET)
+    @RequestMapping(path = "/menus", method = RequestMethod.GET)
     public List<Menu> listMenus(){
         return menuService.listMenu();
     }

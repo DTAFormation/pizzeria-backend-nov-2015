@@ -1,26 +1,36 @@
 package dta.pizzeria.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
     private String nom;
-    private String prenom;
+    private String prenom;	
+    
+    @Column(unique=true)
     private String mail;
+    
     private String adresse;
     private String tel;
+
+    @Column(unique=true)
     private String login;
+    
     private String mdp;
     
     @OneToMany(mappedBy = "client")
@@ -30,6 +40,8 @@ public class Client implements Serializable {
     @OneToMany(mappedBy = "client")
     @JsonIgnore
     private List<Commande> commandes = new ArrayList<Commande>();
+    
+    private boolean validation = false;
 
     public Client() {
     }
@@ -135,4 +147,11 @@ public class Client implements Serializable {
         this.mdp = mdp;
     }
     
+    public boolean getValidation() {
+        return validation;
+    }
+
+    public void setValidation(boolean validation) {
+        this.validation = validation;
+    }
 }

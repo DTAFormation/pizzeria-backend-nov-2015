@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 import dta.pizzeria.backend.entity.Produits;
 import dta.pizzeria.backend.metier.ProduitsService;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
-@RequestMapping("/pizza")
+//@RequestMapping("/pizza")
 @CrossOrigin
 public class PizzaResource {
 
@@ -35,13 +36,19 @@ public class PizzaResource {
 		produitsService.updateProduits(pizza);
 	}
 
-	@RequestMapping(method = RequestMethod.DELETE, value="/{id}")
+	@RequestMapping(method = RequestMethod.DELETE, value="/pizza/{id}")
 	public void removePizza(@RequestParam long id){
 		produitsService.removeProduits(id);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value="/{id}")
-	public Produits getPizza(@RequestParam long id){
+//	@RequestMapping(method = RequestMethod.GET, value="/{id}")
+//	public Produits getPizza(@RequestParam long id){
+//		return produitsService.getProduits(id);
+//	}
+	
+	@RequestMapping(method = RequestMethod.GET, value="/pizza/{id}")
+	public Produits getPizza(@PathVariable("id") Long id){
 		return produitsService.getProduits(id);
 	}
+	
 }
