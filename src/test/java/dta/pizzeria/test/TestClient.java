@@ -50,10 +50,10 @@ public class TestClient {
 	// clientService.save(client1);
 	// }
 
-	
+	/*
 	@Test
 	public void testMail() {
 		Client clientTest = (Client) clientService.connexion("jj", "jj").getBody();
 		mailService.envoyerMailSMTP(clientTest);
-	}
+	}*/
 }
