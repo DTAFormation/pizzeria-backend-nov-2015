@@ -52,7 +52,7 @@ public class TestClient {
 	@Test
 	public void test1() {
 		System.out.println("<====}=0   JE TEST");
-		System.out.println("<====}=0 " + clientService.findByLogin("jj").getNom());
+		//System.out.println("<====}=0 " + clientService.findByLogin("jj").getNom());
 
 	}
 }
