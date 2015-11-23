@@ -61,7 +61,7 @@ public class Ingredients implements Serializable {
         this.Nom = Nom;
     }
 
-    public List<Produits> getPizza() {
+    public List<Produits> getPizzas() {
         return pizzas;
     }
 
