@@ -44,23 +44,29 @@ public class TestDetailsPizza {
     public void before() {
         pService.removeAllProduits();
         
-        Produits produit1 = new Produits(1L, "Pizza1", 12.5F, "C:\\Users\\ETY\\Documents\\Git\\pizzeria-web-image-nov-2015\\pizza.png", Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
-        Produits produit2 = new Produits(2L, "Pizza2", 13.5F, "C:\\Users\\ETY\\Documents\\Git\\pizzeria-web-image-nov-2015\\pizza.png", Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
-        Produits produit3 = new Produits(3L, "Boisson1", 14.5F, "C:\\Users\\ETY\\Documents\\Git\\pizzeria-web-image-nov-2015\\pizza.png", Produits.Type_Produit.BOISSON, null, Produits.Format.NORMAL);       
+        Produits produit1 = new Produits(1L, "Margarita", 12.5F, "http://dtaformation.github.io/pizzeria-web-image-nov-2015/pizza.png", Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
+        Produits produit2 = new Produits(2L, "Reine", 13.5F, "http://dtaformation.github.io/pizzeria-web-image-nov-2015/pizza.png", Produits.Type_Produit.PIZZA, Produits.Taille.LARGE, null);
+        Produits produit3 = new Produits(3L, "Boisson1", 14.5F, "http://dtaformation.github.io/pizzeria-web-image-nov-2015/boisson.jpg", Produits.Type_Produit.BOISSON, null, Produits.Format.NORMAL);       
         
         
-        Ingredients ingredient1 = new Ingredients(1L, "ingredient1");
-        Ingredients ingredient2 = new Ingredients(2L, "ingredient2");
-        Ingredients ingredient3 = new Ingredients(3L, "ingredient3");
+        Ingredients ingredient1 = new Ingredients(1L, "mozza");
+        Ingredients ingredient2 = new Ingredients(2L, "jambon");
+        Ingredients ingredient3 = new Ingredients(3L, "champi");
         
         iService.setIngredient(ingredient1);
         iService.setIngredient(ingredient2);
         iService.setIngredient(ingredient3);
         
         List<Ingredients> listIn1 = new ArrayList<>();
-        listIn1.add(ingredient3);
+        listIn1.add(ingredient1);
         listIn1.add(ingredient2);
         produit1.setIngredients(listIn1);
+        
+        List<Ingredients> listIn2 = new ArrayList<>();
+        listIn2.add(ingredient1);
+        listIn2.add(ingredient2);
+        listIn2.add(ingredient3);
+        produit2.setIngredients(listIn2);
         
         pService.setProduits(produit1);
         pService.setProduits(produit2);
