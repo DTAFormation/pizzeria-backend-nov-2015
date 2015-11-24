@@ -6,6 +6,8 @@
 package dta.pizzeria.backend.dao;
 
 import dta.pizzeria.backend.entity.Produits;
+import dta.pizzeria.backend.entity.Produits.Type_Produit;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -13,5 +15,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author MHayet
  */
 public interface ProduitsDAO extends JpaRepository<Produits, Long>{
+    
+    List<Produits> findByType(Type_Produit type);
     
 }
