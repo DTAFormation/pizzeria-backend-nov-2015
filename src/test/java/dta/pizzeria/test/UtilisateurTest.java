@@ -30,15 +30,20 @@ public class UtilisateurTest {
     
     @Test
     public void mainTest() {
-        System.out.println(">>=====>"+userService.findAll());
-        System.out.println(">>=====>"+userService.findOne(1L));
+        System.out.println(">>===findAll===>"+userService.findAll());
+        System.out.println(">>===findOne===>"+userService.findOne(1L));
+    }
+    
+    @Test
+    public void testLogin(){
+        System.out.println(">>===Login===>"+ userService.login("login1", "motdepasse"));
     }
     
     @Before
     public void setUp() {
         userService.deleteAll();
-        Utilisateur u1=new Utilisateur(1L,"login", "mdp", "nom", "prenom", "mail", "adresse", "tel", Utilisateur.Type.EMPLOYEE.EMPLOYEE);
-        Utilisateur u2=new Utilisateur(2L,"login", "mdp", "nom", "prenom", "mail", "adresse", "tel", Utilisateur.Type.EMPLOYEE.ADMINISTRATEUR);
+        Utilisateur u1=new Utilisateur(1L,"login1", "motdepasse", "nom", "prenom", "mail", "adresse", "0123456789", Utilisateur.Type.EMPLOYEE.EMPLOYEE);
+        Utilisateur u2=new Utilisateur(2L,"login2", "motdepasse", "nom", "prenom", "mail", "adresse", "tel", Utilisateur.Type.EMPLOYEE.ADMINISTRATEUR);
         
         userService.save(u1);
         userService.save(u2);
