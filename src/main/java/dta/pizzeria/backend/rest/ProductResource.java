@@ -47,7 +47,7 @@ public class ProductResource {
                     for(Ingredients ing:ingredients){
                             ingredientsService.updateIngredient(ing);
                             produit.getIngredients().add(ing);
-                            ing.getPizza().add(produit);
+                            ing.getPizzas().add(produit);
                             ingredientsService.updateIngredient(ing);
                     }
                 }
@@ -64,7 +64,7 @@ public class ProductResource {
                     for(Ingredients ing:ingredients){
                             ingredientsService.updateIngredient(ing);
                             produit.getIngredients().add(ing);
-                            ing.getPizza().add(produit);
+                            ing.getPizzas().add(produit);
                             ingredientsService.updateIngredient(ing);
                     }
                 }
