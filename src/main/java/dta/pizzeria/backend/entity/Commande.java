@@ -149,6 +149,11 @@ public class Commande implements Serializable {
     public void setMenus(List<Menu> menus) {
         this.menus = menus;
     }
+
+    @Override
+    public String toString() {
+       return "";// return "Commande{" + "id=" + id + ", total=" + total + ", paye=" + paye + ", type=" + type + ", paiement=" + paiement + ", etat=" + etat + ", client=" + client + ", produits=" + produits + ", menus=" + menus + '}';
+    }
     
     
 }

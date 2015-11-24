@@ -14,7 +14,8 @@ import dta.pizzeria.backend.entity.Client;
  * @author Vincent
  */
 public interface ClientDao extends JpaRepository<Client, Long>{
+	Client findByNomAndPrenom(String nom, String prenom);
+
 	Client findByLoginOrMail(String login, String mail);
 	Client findByLoginAndMdp(String login, String mdp);
-	
 }

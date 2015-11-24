@@ -38,7 +38,14 @@ public class ClientRessource {
 	public void updateClient(@RequestBody Client client) {
 		clientService.save(client);
 	}
+        
+         @RequestMapping(method = RequestMethod.POST, value="/search")
+        public Client findByNomAndPrenom(@RequestBody Client client) {
+            System.out.println(client);
+            return clientService.FindByNomAndPrenom(client.getNom(), client.getPrenom());
+        }
 
+        
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
 	public void removeClient(@RequestParam long id) {
 		clientService.delete(id);

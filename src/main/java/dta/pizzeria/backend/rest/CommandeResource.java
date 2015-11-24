@@ -78,7 +78,7 @@ public class CommandeResource {
                 retour.add(commande);
             }
         }
-
+        System.err.println("RETOUR LOL" + retour.get(0).getType());
         return retour;
     }
 
