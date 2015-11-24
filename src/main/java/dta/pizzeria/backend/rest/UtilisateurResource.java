@@ -8,6 +8,7 @@ package dta.pizzeria.backend.rest;
 import dta.pizzeria.backend.entity.Utilisateur;
 import dta.pizzeria.backend.metier.UtilisateurService;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -55,8 +55,14 @@ public class UtilisateurResource {
         userService.delete(id);
     }
     
+//    @RequestMapping(method = RequestMethod.POST, value = "/login")
+//    public boolean login(@RequestPart("login") String login, @RequestPart("password") String mdp){
+//        return userService.login(login, mdp);
+////       return false;
+//    }
+    
     @RequestMapping(method = RequestMethod.POST, value = "/login")
-    public boolean login(@RequestParam String login,@RequestParam String mdp){
-        return userService.login(login, mdp);
+    public Utilisateur login(@RequestBody Map<String,String> map){
+       return userService.login(map.get("login"), map.get("password"));
     }
 }
