@@ -94,7 +94,7 @@ public class testServices {
         produitsDao.save(dessert);
         
         //On cree un menu
-        Menu menu = new Menu("Tartiflette", 8.75F);
+        Menu menu = new Menu("Tartiflette", 8.75F, "Menu réservé aux fans des soirées d'hiver");
         menuDao.save(menu);
         
         dessert.getMenus().add(menu);

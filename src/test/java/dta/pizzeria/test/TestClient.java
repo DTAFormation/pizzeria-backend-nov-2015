@@ -1,7 +1,5 @@
 package dta.pizzeria.test;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.junit.Before;
@@ -15,6 +13,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import dta.pizzeria.backend.PizzeriaBackendConfig;
 import dta.pizzeria.backend.entity.Client;
 import dta.pizzeria.backend.metier.ClientService;
+import dta.pizzeria.backend.metier.MailService;
+import org.springframework.http.ResponseEntity;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = PizzeriaBackendConfig.class)
@@ -23,14 +23,17 @@ public class TestClient {
 
 	@Autowired
 	private ClientService clientService;
+	
+	@Autowired
+	private MailService mailService;
 
 	@Before
 	@Transactional
 	public void before() {
 		clientService.deleteAll();
 
-		Client client1 = new Client("jean", "jacques", "j2j@jj.com", "2 rue de JJ", "1234567890", "jj", "jj");
-		Client client2 = new Client("jeanne", "jacques", "jj@jj.com", "2 rue de JJ22", "1234567890", "jj2", "jj2");
+		Client client1 = new Client("jean", "jacques", "xulakabo@mailzi.ru", "2 rue de JJ", "1234567890", "jj", "jj");
+		Client client2 = new Client("jeanne", "jacques", "pizzeria.dta@gmail.com", "2 rue de JJ22", "1234567890", "jj2", "jj2");
 
 		clientService.save(client1);
 		clientService.save(client2);
@@ -50,9 +53,13 @@ public class TestClient {
 
 	
 	@Test
-	public void test1() {
-		System.out.println("<====}=0   JE TEST");
-		//System.out.println("<====}=0 " + clientService.findByLogin("jj").getNom());
-
+	public void testMail() {
+            ResponseEntity<?> resp = clientService.connexion("jj", "jj");
+            if (resp.getBody().getClass().equals(Client.class)){
+                System.out.println("<====}=0 Client trouvé "+resp.getBody().toString());
+            }
+            if(resp.getBody().getClass().equals(String.class)){
+                System.out.println("<====}=0 Erreur: "+resp.getBody().toString());
+            }
 	}
 }
