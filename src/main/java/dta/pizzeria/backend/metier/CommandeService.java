@@ -37,15 +37,16 @@ public class CommandeService {
     }
 
     @Transactional
-    public <S extends Commande> S save(S s) {
+    public void save(Commande s) {
         
         for (Produits p : s.getProduits()) {
             
             p = ps.updateProduits(p);
             System.err.println("PRODUIT : " + p);
         }
-
-        return commandDao.save(s);
+        System.err.println("******************************zepkfkjzioefjiozjfojzio");
+        commandDao.save(s);
+        
     }
 
     public void delete(Long id) {

@@ -36,8 +36,8 @@ public class CommandeResource {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public Commande setCommande(@RequestBody Commande commande) {
-        return commandeService.save(commande);
+    public void setCommande(@RequestBody Commande commande) {
+        commandeService.save(commande);
     }
     
     @RequestMapping(method = RequestMethod.PUT)

@@ -191,7 +191,9 @@ public class Produits implements Serializable {
 
     @Override
     public String toString() {
-        return "dta.pizzeria.backend.entity.Produits[ id=" + id + " ]";
+        return "Produits{" + "id=" + id + ", nom=" + nom + ", prix=" + prix + ", image=" + image + ", type=" + type + ", taille=" + taille + ", format=" + format + ", commandes=" + commandes + ", ingredients=" + ingredients + ", menus=" + menus + '}';
     }
+
+  
 
 }
